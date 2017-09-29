@@ -16,7 +16,7 @@ function CSX = AddPcbrndTraceEnds(CSX, PCBRND, current, priority, layer_number, 
 % along with this program.  If not, see <http://www.gnu.org/licenses/>
 %
 
-segments = 10;
+segments = PCBRND.kludge.segments;
 
 for counter=1:(segments + 1)
    end_theta = (trace_theta - (pi / 2)) + ( pi * ((counter - 1) / segments ));

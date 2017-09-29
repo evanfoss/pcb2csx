@@ -1,4 +1,4 @@
-function PCBRND = InitPCBRND(layers, layer_types, void, base_priority, offset)
+function PCBRND = InitPCBRND(layers, layer_types, void, base_priority, offset, kludge)
 %
 % Initializes the basics to add a pcb layout into openems
 %
@@ -51,6 +51,9 @@ prio.void = prio.coppertrace + 1;
 %   prio.void = mask_prio + 1;
 %   prio.silk = mask_prio;
 %end
+
+PCBRND.kludge.segments = kludge.segments;
+
 PCBRND.layers = layers;
 PCBRND.layer_types = layer_types;
 PCBRND.void = void;

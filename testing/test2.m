@@ -93,7 +93,9 @@ offset.x = -50;
 offset.y = 50;
 offset.z = 0;
 
-PCBRND = InitPCBRND(layers, layer_types, void, base_priority, offset);
+kludge.segments = 10;
+
+PCBRND = InitPCBRND(layers, layer_types, void, base_priority, offset, kludge);
 CSX = InitPcbrndLayers(CSX, PCBRND);
 
 % square substrate
