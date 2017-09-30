@@ -12,8 +12,20 @@ At the moment I have no real installation system just copy this code to a sensib
 addpath('~/opt/openEMS/share/pcb2csx/matlab');
 Alternatively you could just copy it to the same directory CSXCAD placed it's matlab files in which you should already have done an addpath for.
 
+# Limitations
+
+* No polygons inside CSG created holes inside polygons. I am working to fix the nested polygon problem.
+* No curves/arcs this is a limitation inherited from CSXCAD.
+* Trace ends in almost every PCB layout tool ever are round. Currently we let the user define what order polygon to replace them with.
+
+# Plans
+
+* Fix the nested polygon problem (see Limitations)
+* Support curves/arcs (see Limitations)
+* Set the order of the polygon's used to replace round stuff as a function of mesh density.
+
 # License
-This project is LGPL 2.1 but I will probably change that later to LGPL 3.0 to match the license used by CSXCAD.
+My prefrence would have been LGPL2 but I have decided to go with LGPL 3.0 to match the license used by CSXCAD.
 
 
 
