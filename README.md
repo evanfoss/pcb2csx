@@ -1,8 +1,5 @@
 # pcb2csx
-This is a collection of matlab/octave scripts used to convert printed circuit board (PCB) geometry to CSXCAD.
-
-# Specifics
-This is intended for PCB layout not just for the layout tool PCB-RND but for anyone else who feels like supporting it.
+This is a collection of matlab/octave scripts used to convert printed circuit board (PCB) geometry to CSXCAD. This is intended for PCB layout not just for the layout tool PCB-RND but for anyone else who feels like supporting it. 
 
 # The problem with polygons
 CSXCAD is built using CSG (Constructive Solid Geometry) however a lot of PCB layout software does not use this method for calculating clearance in polygons. This library supports clearance via precutting polygons and using the libraries own cutting solids automatically generated with each object (trace, pad, & etc).
