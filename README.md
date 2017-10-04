@@ -24,7 +24,7 @@ Alternatively you could just copy it to the same directory CSXCAD placed it's ma
 * Support for non-rectangular port geometry.
 
 # License
-My prefrence would have been LGPL2 but I have decided to go with LGPL 3.0 to match the license used by CSXCAD.
+This library is LGPL 2/LGPL 3.0. LGPL2 is my prefrence but LGPL 3.0 is added to match the license used by CSXCAD.
 
 
 
