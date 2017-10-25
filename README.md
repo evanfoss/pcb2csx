@@ -31,5 +31,7 @@ Alternatively you could just copy it to the same directory CSXCAD placed it's ma
 # License
 This library is LGPL 2/LGPL 3.0. LGPL2 is my prefrence but LGPL 3.0 is added to match the license used by CSXCAD.
 
+# Development
+So far this project is solely mine (Evan Foss) so far. Because it's just me and because of the projects history this github project will be where offical distribution happens but the actual development will continue at svn://repo.hu/pcb-rnd/work/fem/matlab
 
 
