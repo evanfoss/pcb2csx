@@ -1,5 +1,8 @@
 function PCBRND = RegPcbrndPad(PCBRND, layer, points, refdes, pin)
-
+%
+% This takes the geometry of a pad, it's unique identification, and registers 
+% it in the PCBRND data structure.
+%
 % Copyright (C) 2017 Evan Foss
 %
 % This program is free software: you can redistribute it and/or modify

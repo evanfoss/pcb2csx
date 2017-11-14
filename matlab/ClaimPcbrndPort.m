@@ -1,5 +1,6 @@
 function [PCBRND, points layer_number] = ClaimPcbrndPort(PCBRND, refdes, pad)
 %
+% This is used to take ownership over a port.
 %
 % Copyright (C) 2017 Evan Foss
 %

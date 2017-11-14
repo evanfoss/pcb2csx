@@ -1,5 +1,7 @@
-function [PCBRND, points layer_number] = ClaimPcbrndPort(PCBRND, refdes, pad)
-
+function [PCBRND, points layer_number] = UnClaimPcbrndPort(PCBRND, refdes, pad)
+% 
+% This is used to free up a port that you were using.
+%
 % Copyright (C) 2017 Evan Foss
 %
 % This program is free software: you can redistribute it and/or modify

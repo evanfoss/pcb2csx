@@ -1,4 +1,7 @@
 function PCBRND = RegPcbrndPortUse(PCBRND, refdes, pad, status)
+%
+% this function marks a port as in use.
+%
 
 % Copyright (C) 2017 Evan Foss
 %
