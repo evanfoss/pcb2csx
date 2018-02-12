@@ -1,0 +1,61 @@
+
+Units
+- We need to specify units. OpenEMS by default uses meters but this could be
+  fudged to scale things to inches or something non-metric if we wanted.
++ We should support scaling to enable people to incorporate other objects 
+  the model from sources other than pcb-rnd (like mech-cad) for things 
+  like the chassis or what ever.
+
+Boundary Conditions (http://openems.de/index.php/FDTD_Boundary_Conditions)
+- There are 6 fields because this is the cube that contains the model we are 
+  solving.
+- Boundary conditions for the environment the model is in must be defined. For 
+  antenna's these will be different than for say a filter. There are a few pre-
+  coded constants PMC, MUR, PML_8 and etc that we should provide as options. 
+  Users can also manually enter any number they want.
+- It is important to locate the model at the right distance from the boundary
+  box walls. This is actually set by how far up/down/left/right you mesh from 
+  the model. For PML it is suggested to use a distance of 1/4 the wavelength
+  of the longest frequency involved.
+  (In openems's documentation this is actually one of the rules of thumb for 
+  meshing.)
+
+Excitation (http://openems.de/index.php/Excitation)
+- We want Gaussian excitation for a default. This is what most people will use 
+  to plot the spectrum of filter absorbtions and etc. It does this on ports.
+- The next most useful excitation is spatial excitiation is the standard 
+  excitation. AddExcitation does this but I have honestly not seen it used in 
+  an examples. Basically everything uses the SetGaussExcite.
+
+Mesh (http://openems.de/index.php/FDTD_Mesh)
+(This is really just a list of exactly the same things stated in the URL
+above)
+- Mesh density should be at minimum 1/10 of the shortest wavelength being 
+  studied. 
+- Mesh density shouldn't go finer than 1/15 of the shortest wavelength being 
+  studied.
+- Mesh density should avoid radical changes. (I believe this is what damns 3D 
+  copper and via modeling) Mesh density shouldn't double from one cell to it's
+  neighbor.
+- For 2D copper (which must be the default and currently is the only fully 
+  supported mode.) At the edge of the copper 1/3 of the copper should land
+  inside the cell leaving 2/3 outside.
+- Please see the last note in boundary conditions about centering the model in
+  the mesh.
+
+Graphing (http://openems.de/index.php/Visualization_of_Results)
+- Honestly it's just described in that url. I can't condense it.
+- There are features missing but I should experiment more before pretending to 
+  know something the authors did not.
+
+Dump Boxes (http://openems.de/index.php/Dump_Box_Property)
+- The term "box" isn't quite accurate. Supposedly this can be invoked with any
+  other primitives but the documentation also says the results are invalid.
+  (eye roll)
+- 
+
+N2FF (http://openems.de/index.php/NF2FF)
+- Honestly again they did a better than I could. 
+- The N2FF lets you map 
+
+

@@ -1,4 +1,4 @@
-function PCBRND = RegPcbrndPad(PCBRND, layer, points, refdes, pin)
+function PCBRND = RegPcbrndPad(PCBRND, layer, points, refdes, pad)
 %
 % This takes the geometry of a pad, it's unique identification, and registers 
 % it in the PCBRND data structure.
@@ -20,10 +20,6 @@ function PCBRND = RegPcbrndPad(PCBRND, layer, points, refdes, pin)
 %
 
 
-name.refdes = refdes;
-name.pin_number = pin.number;
-name.id = pin.id;
-
 points = CalcPcbrndPointsOffset(PCBRND, points);
 
 % if the pad has more or less than 4 corners we are screwed.
@@ -35,17 +31,17 @@ end;
 
 % the first entry is tricker to add than the later ones
 if (! isfield(PCBRND, 'ports'))
-   PCBRND.ports(1).name = name;
-   PCBRND.ports(1).points = points;
-   PCBRND.ports(1).layer = layer;
-   PCBRND.ports(1).status = 0;
-   return;
-end
+   port_number = 1;
+else
+   port_number = size(PCBRND.ports, 2) + 1;
+end;
 
 % the later entries are simple
-PCBRND.ports(size(PCBRND.ports, 2) + 1).name = name;
-PCBRND.ports(size(PCBRND.ports, 2) + 1).points = points;
-PCBRND.ports(size(PCBRND.ports, 2) + 1).layer = layer;
-PCBRND.ports(size(PCBRND.ports, 2) + 1).status = 0;
+PCBRND.ports(port_number).number = pad.number;
+PCBRND.ports(port_number).id = pad.id;
+PCBRND.ports(port_number).refdes = refdes;
+PCBRND.ports(port_number).points = points;
+PCBRND.ports(port_number).layer = layer;
+PCBRND.ports(port_number).status = 0;
 
 endfunction

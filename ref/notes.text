@@ -1,0 +1,4 @@
+
+* Meshing can happen before or after the geometry is defined
+* octave (and probably matlab) won't let me do layers(1, x) = 'copper' so I have to find another way to pass layer matterial names
+

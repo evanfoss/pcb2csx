@@ -19,8 +19,7 @@ function PCBRND = RegPcbrndPortUse(PCBRND, refdes, pad, status)
 % along with this program.  If not, see <http://www.gnu.org/licenses/>
 %
 
-
-% status = 1 
+% status = 1
 % In use
 % status = 0
 % Not in use
@@ -28,6 +27,5 @@ function PCBRND = RegPcbrndPortUse(PCBRND, refdes, pad, status)
 port_number = LookupPcbrndPortNumber(PCBRND, refdes, pad);
 
 PCBRND.ports(port_number).status = status;
-
 
 endfunction

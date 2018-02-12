@@ -1,0 +1,79 @@
+
+example-invFantenna.m
+- This example is not completed or even really started.
+- The intention is to have a complete example that uses geometry all the way through simulation.
+
+example-trace_geo.m
+example-trace_sim.m
+example-trace.pcb
+example-trace.scr1.png
+example-trace.scr2.png
+- This example should be a trace on the bottom of a 40mm x 40mm square substrate.
+- Please note that to better show the layer stackup an unrealistically thick substrate thickness was used.
+- I am including two screen captures of it so that you can see what it looks like. 
+  The first view is to show hozontal&vertical alignment.
+  The second view is to show the stackup of the layers.
+  Please note colors are randomly assigned at execution time.
+
+*** add multi trace example here
+
+example-square_geo.m
+example-square_sim.m
+example-square.pcb
+example-square.scr1.png
+example-square.scr2.png
+- This example should be a 20mm x 20mm square of copper on the bottom of a 40mm x 40mm substrate.
+- Please note that to better show the layer stackup an unrealistically thick substrate thickness was used.
+- You will see an error/warning message "An geometry read error occured!!"
+  "Warning: No primitives found in property: AIR!"
+- I am including two screen captures of it so that you can see what it looks like.
+  The first view is to show hozontal&vertical alignment.
+  The second view is to show the stackup of the layers.
+  Please note colors are randomly assigned at execution time.
+
+example-squarec_geo.m
+example-squarec_sim.m
+example-squarec.pcb
+example-squarec.scr1.png
+example-squarec.scr2.png
+- This example should be a 20mm x 20mm copper polygon with a hole in it on the bottom of a substrate.
+- It should run with no warnings.
+- I am including two screen captures of it so that you can see what it looks like.
+  The first view is to show hozontal&vertical alignment.
+  The second view is to show the stackup of the layers. 
+  Notice that the second view has it's grid turned off for better image clarity.
+  Please note colors are randomly assigned at execution time.
+
+example-cutout_geo.m
+example-cutout_sim.m
+example-cutout.pcb
+example-cutout.scr1.png
+example-cutout.scr2.png
+- This example should be a 20mm x 10mm cutout (add 1mm for trace thickness) inside a 40mm x 40mm substrate.
+- Please note that to better show the layer stackup an unrealistically thick substrate thickness was used.
+- You will see an error/warning message "An geometry read error occured!!"
+  "Warning: No primitives found in property: COPPER!" please ignore it.
+- I am including two screen captures of it so that you can see what it looks like.
+  The first view is to show hozontal&vertical alignment.
+  The second view is to show the stackup of the layers.
+  Please note colors are randomly assigned at execution time.
+
+example-testpoint_geo.m
+example-testpoint_sim.m
+example-testpoint.pcb
+example-testpoint_sim.m
+- The important point to have here is that we don't actually care about the size of the pad in the foot print. 
+  The footprint's pads should be copper polygons the test point should be smaller than a mesh cell seated 
+  in a "reasonable" place inside that polygon. So a centroid of some kind for the pad is required.
+  I believe the hyp exporter just makes the pad (not matter it's size) into the test point which is kind of
+  wrong.
+- Please note that to better show the layer stackup an unrealistically thick substrate thickness was used.
+- This example should be a 20mm x 10mm cutout with a set of 3 pads in an element called U1.
+- I am including two screen captures of it so that you can see what it looks like.
+  The first view is to show hozontal&vertical alignment.
+  The second view is to show the stackup of the layers.
+  Please note colors are randomly assigned at execution time.
+
+
+
+

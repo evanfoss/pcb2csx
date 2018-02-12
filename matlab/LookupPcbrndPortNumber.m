@@ -17,10 +17,6 @@ function port_number = LookupPcbrndPortNumber(PCBRND, refdes, pad)
 %
 
 
-name.refdes = refdes;
-name.pin_number = pad.number;
-name.id = pad.id;
-
 port_number = 1;
 
 if (! isfield(PCBRND, 'ports'))
@@ -29,11 +25,11 @@ if (! isfield(PCBRND, 'ports'))
 end
 
 while(port_number < (size(PCBRND.ports,2) + 1))
-   current = PCBRND.ports(port_number).name;
-   if (strcmp(current.refdes, name.refdes) && strcmp(current.pin_number, name.pin_number) && strcmp(current.id, name.id) )
+   current = PCBRND.ports(port_number);
+   if (strcmp(current.refdes, refdes) && strcmp(current.number, pad.number) && strcmp(current.id, pad.id) )
       return;
    end
-   entry_num = entry_num + 1;
+   port_number = port_number + 1;
 end
 
 disp('Port in question not found. LookupPcbrndPort returning nothing. Sorry.');

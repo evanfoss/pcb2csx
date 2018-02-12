@@ -1,0 +1,44 @@
+Step 1: crunch-mode export plugin development
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We need each and every one of the followig points done _before_ the
+crunch-mode export plugin development can start. This is a checklist.
+
+1. 2..6 example input (.pcb) files with different simple constructions
+   that'd test different output features. Keep each as simple as possible:
+   e.g. a single trace line, a single polygon with 6..8 point, a single arc,
+   etc.
+
+2. One hand written output file for each of the .pcb files of point 1. that
+   contains the expected output. Preferrably these files are byte-to-byte what
+   pcb-rnd needs to generate when exporting the given .pcb. You don't need to
+   write a converter tool or do anything complicated, just use a text editor
+   to write the file and then test if it looks good with openEMS. So for a
+   point 1. foo.pcb there would be foo.whatever, which can be loaded in openEMS.
+
+3. A step-by-step explanation of what exactly needs to be done in openEMS
+   to check whether an exported file works. Chose simplicity over completeness:
+   pick one process/action/method-to-check, probably the most sensitive one,
+   that is the most likely to break if the export file is wrong
+   and document that one process. Do _not_ assume the reader knows or wants
+   to know openEMS, so write down each step, dumbed down, like "file menu, load,
+   select the exported file", etc.
+
+4. For each of the export files of point 2., a reference output when it went
+   through process 3. It can be an output file from openEMS or a screenshot.
+
+5. If there's anything interesting with an input of 1., please also write a
+   short plain text file explaining the trick. E.g. if in point 1 bar.pcb
+   you have an arc and openEMS doesn't support arc and you had to approximate
+   it with 4 line segments in bar.whatever, there should be a bar.txt explaining
+   this and giving some hints on the process, e.g. how many line segments
+   should be used, what should happen at corner cases, etc. This file can be
+   ommited for real straight-forward examples.
+
+6. All these files should be commited in this directory before I can start.
+
+
+Step 2: testing with real data and bugfixing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+(will write this section when we get here)

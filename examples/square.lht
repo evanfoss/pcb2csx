@@ -1,0 +1,318 @@
+ha:pcb-rnd-board-v3 {
+
+ ha:attributes {
+   {PCB::grid::unit}=mm
+   {PCB::conf::editor/draw_grid}=true
+   {PCB::conf::editor/buffer_number}=0
+ }
+
+ li:styles {
+   ha:Signal {
+    diameter = 1.999996mm
+    thickness = 10.0mil
+    hole = 31.5mil
+    clearance = 20.0mil
+   }
+   ha:Power {
+    diameter = 2.199894mm
+    thickness = 20.0mil
+    hole = 0.999998mm
+    clearance = 20.0mil
+   }
+   ha:Fat {
+    diameter = 137.8mil
+    thickness = 4.99999mm
+    hole = 47.24mil
+    clearance = 0.999998mm
+   }
+   ha:Sig-tight {
+    diameter = 64.0mil
+    thickness = 10.0mil
+    hole = 31.5mil
+    clearance = 12.0mil
+   }
+ }
+
+ ha:meta {
+   ha:size {
+    thermal_scale = 0.500000
+    x = 2.95276in
+    y = 2.95276in
+    isle_area_nm2 = 199999999.999200
+   }
+   ha:cursor {
+    zoom = 0.000000
+    x = 0.0
+    y = 8.999982mm
+   }
+   ha:drc {
+    min_drill = 15.0mil
+    min_ring = 10.0mil
+    bloat = 12.0mil
+    shrink = 9.0mil
+    min_width = 10.0mil
+    min_silk = 7.0mil
+   }
+   ha:grid {
+    spacing = 1.0mm
+    offs_x = 0.0
+    offs_y = 0.0
+   }
+ }
+
+ ha:data {
+
+   li:objects {
+   }
+   li:layers {
+
+    ha:component {
+     lid=0
+     group=3
+     ha:combining {     }
+     visible=1
+
+      li:objects {
+      }
+    }
+
+    ha:solder {
+     lid=1
+     group=8
+     ha:combining {     }
+     visible=1
+
+      li:objects {
+       ha:polygon.41 { clearance=40.0mil;
+        li:geometry {
+          ta:contour {
+           { 17.0mm; 19.0mm }
+           { 37.0mm; 19.0mm }
+           { 37.0mm; 39.0mm }
+           { 17.0mm; 39.0mm }
+          }
+        }
+
+        ha:flags {
+         clearpoly=1
+        }
+       }
+      }
+    }
+
+    ha:comp-GND {
+     lid=2
+     group=3
+     ha:combining {     }
+     visible=1
+
+      li:objects {
+      }
+    }
+
+    ha:comp-power {
+     lid=3
+     group=3
+     ha:combining {     }
+     visible=1
+
+      li:objects {
+      }
+    }
+
+    ha:sold-GND {
+     lid=4
+     group=8
+     ha:combining {     }
+     visible=1
+
+      li:objects {
+      }
+    }
+
+    ha:sold-power {
+     lid=5
+     group=8
+     ha:combining {     }
+     visible=1
+
+      li:objects {
+      }
+    }
+
+    ha:signal3 {
+     lid=6
+     group=5
+     ha:combining {     }
+     visible=1
+
+      li:objects {
+      }
+    }
+
+    ha:outline {
+     lid=7
+     group=7
+     ha:combining {     }
+     visible=1
+
+      li:objects {
+       ha:line.29 {
+        x1=7.0mm; y1=9.0mm; x2=47.0mm; y2=9.0mm; thickness=10.0mil; clearance=40.0mil;
+        ha:flags {
+         clearline=1
+        }
+       }
+       ha:line.32 {
+        x1=47.0mm; y1=9.0mm; x2=47.0mm; y2=49.0mm; thickness=10.0mil; clearance=40.0mil;
+        ha:flags {
+         clearline=1
+        }
+       }
+       ha:line.35 {
+        x1=47.0mm; y1=49.0mm; x2=7.0mm; y2=49.0mm; thickness=10.0mil; clearance=40.0mil;
+        ha:flags {
+         clearline=1
+        }
+       }
+       ha:line.38 {
+        x1=7.0mm; y1=49.0mm; x2=7.0mm; y2=9.0mm; thickness=10.0mil; clearance=40.0mil;
+        ha:flags {
+         clearline=1
+        }
+       }
+      }
+    }
+
+    ha:silk {
+     lid=8
+     group=10
+     ha:combining { auto=1;     }
+     visible=1
+
+      li:objects {
+      }
+    }
+
+    ha:silk {
+     lid=9
+     group=1
+     ha:combining { auto=1;     }
+     visible=1
+
+      li:objects {
+      }
+    }
+   }
+ }
+
+ ha:netlists {
+   li:input {
+   }
+ }
+ ha:layer_stack {
+  li:groups {
+   ha:0 {
+    name = top_paste
+    ha:type { top=1; paste=1;    }
+    li:layers {    }
+   }
+   ha:1 {
+    name = top_silk
+    ha:type { silk=1; top=1;    }
+    li:layers { 9;    }
+   }
+   ha:2 {
+    name = top_mask
+    ha:type { top=1; mask=1;    }
+    li:layers {    }
+   }
+   ha:3 {
+    name = top_copper
+    ha:type { copper=1; top=1;    }
+    li:layers { 0; 2; 3;    }
+   }
+   ha:4 {
+    ha:type { substrate=1; intern=1;    }
+    li:layers {    }
+   }
+   ha:5 {
+    name = Intern
+    ha:type { copper=1; intern=1;    }
+    li:layers { 6;    }
+   }
+   ha:6 {
+    ha:type { substrate=1; intern=1;    }
+    li:layers {    }
+   }
+   ha:7 {
+    name = global outline
+    ha:type { outline=1; intern=1;    }
+    li:layers { 7;    }
+   }
+   ha:8 {
+    name = bottom_copper
+    ha:type { bottom=1; copper=1;    }
+    li:layers { 1; 4; 5;    }
+   }
+   ha:9 {
+    name = bottom_mask
+    ha:type { bottom=1; mask=1;    }
+    li:layers {    }
+   }
+   ha:10 {
+    name = bottom_silk
+    ha:type { silk=1; bottom=1;    }
+    li:layers { 8;    }
+   }
+   ha:11 {
+    name = bottom_paste
+    ha:type { bottom=1; paste=1;    }
+    li:layers {    }
+   }
+  }
+ }
+ li:pcb-rnd-conf-v1 {
+  ha:overwrite {
+   ha:design {
+    line_thickness = 10.00 mil
+    groups = {1,3,4,c:2,5,6,s:7:8}
+    via_thickness = 2000.00 um
+    via_drilling_hole = 31.50 mil
+    clearance = 20.00 mil
+   }
+   ha:editor {
+    live_routing = false
+    snap_pin = true
+    grid = 1000.00 um
+    show_number = false
+    auto_drc = false
+    all_direction_lines = false
+    hide_names = false
+    unique_names = false
+    local_ref = false
+    name_on_pcb = true
+    orthogonal_moves = false
+    check_planes = false
+    swap_start_direction = false
+    clear_line = true
+    show_drc = false
+    grid_unit = mm
+    draw_grid = true
+    only_names = false
+    full_poly = false
+    buffer_number = 0
+    lock_names = false
+    thin_draw_poly = false
+    thin_draw = false
+    rubber_band_mode = false
+    description = false
+   }
+   ha:plugins {
+    ha:mincut {
+     enable = false
+    }
+   }
+  }
+ }
+}

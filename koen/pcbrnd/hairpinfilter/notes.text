@@ -1,0 +1,6 @@
+These values match Koen's original model. Later on pcb-rnd will add them automatically but for now I have to copy/paste.
+
+top T=0.001778
+substrate T=0.152000 C=4.80000
+bottom T=0.001778
+

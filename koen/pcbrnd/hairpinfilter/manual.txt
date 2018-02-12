@@ -1,0 +1,15 @@
+% rough instructions by Evan Foss
+
+* Install pcb-rnd
+* Install OpenEMS with CTB (Circuit Tool Box), and hyp2mat
+* Make and go to a convient directory 
+mkdir ~/emtesting
+cd ~/emtesting
+* Download the source to the setup
+git clone https://github.com/koendv/hyp2mat/tree/master/eagle/hairpinfilter
+cd hairpinfilter
+* Move the original results so you can compare against them later
+mv hairpinfilter_simulation.png hairpinfilter_simulation.origin.png
+* Test that everything you installed works. 
+octave demo_hairpin.m
+* Compare the file you just made hairpinfilter_simulation.png to hairpinfilter_simulation.origin.png they should have comparable content. 

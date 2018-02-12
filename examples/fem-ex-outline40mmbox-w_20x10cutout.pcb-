@@ -1,4 +1,4 @@
-ha:pcb-rnd-board-v3 {
+ha:pcb-rnd-board-v4 {
  ha:netlists {
   li:input {
   }
@@ -78,6 +78,7 @@ ha:pcb-rnd-board-v3 {
     }
     li:layers {
     }
+    name = grp_4
    }
    ha:5 {
     ha:type {
@@ -96,6 +97,7 @@ ha:pcb-rnd-board-v3 {
     }
     li:layers {
     }
+    name = grp_6
    }
    ha:7 {
     ha:type {
@@ -4322,6 +4324,8 @@ ha:pcb-rnd-board-v3 {
   }
  }
  ha:data {
+  li:padstack_prototypes {
+  }
   li:objects {
   }
   li:layers {

@@ -1,0 +1,113 @@
+%%%%%%%%%%%THE FOLLOWING IS INCOMPLETE more to come
+
+
+%%%%% notes to the user:
+% You have to define the following variables.
+% air_epr, air_mu, air_kpa, air_sigma
+% 
+
+substrate_priority = 0
+copper_priority = substrate_priority + 1
+
+soldermask_priority = substrate_priority 
+
+%%%%% define materials
+%%%% name them all
+% for more on materials see the following link
+% http://openems.de/index.php/Drude/Lorentz_Material_Property
+% AddMetal is a perfect conductor (PEC)
+% http://openems.de/index.php/Metal_Property
+CSX = AddMetal(CSX, 'Copper')
+%% AddMaterial 
+%% http://openems.de/index.php/Material_Property
+CSX = AddMaterial(CSX, 'FR4')
+CSX = AddMaterial(CSX, 'Rodgers')
+CSX = AddMaterial(CSX, 'Air')
+%%%% define their properties
+%%% SetMaterialProperty(parent_object, 'name',
+%%% Epsilon is the relative electric permittivity
+%%% Mue is the relative magnetic permeability
+%%% Kappa is the electrical conductivity
+%%% Sigma is the magnetic conductivity
+%%% the minimum people have to set is Epsilon I believe - EEF
+CSX = SetMaterialProperty(CSX, 'Air', 'Epsilon', air_epr, 'Mue', air_mu, 'Kappa', air_kpa, 'Sigma', air_sig);
+SetMaterialProperty(CSX, 'fr4', 'Epsilon', fr4_epr, 'Mue', fr4_mu, 'Kappa', fr4_kpa, 'Sigma', fr4_sig);
+SetMaterialProperty(CSX, 'rodgers', 'Epsilon', rodgers_epr, 'Mue', rodgers_mu, 'Kappa', rodgers_kpa, 'Sigma', rodgers_sig);
+
+%%%%% define geometry
+%%%% geometry part 1
+% layer properties thickness and matterial for each layer
+
+layerP1_copperZ = 
+% how thick is the core of the board?
+layer0_substrateZ = 
+layerN1_copperZ = 
+% if we had more layers it would be layerN2 for the next layer down.
+% layerN2_substrateZ = 
+% layerN2_copperZ = 
+% and layerP2 for the next layer up.
+% layerP2_substrateZ = 
+% layerP2_copperZ = 
+% layer masks would be
+% layerP_maskZ = 
+% layerN_maskZ = 
+
+%%%% geometry part 2
+%%% first the substrate
+
+%%defining a points is painfull because of the notation
+%%point_name(1,n) = X_value; point_name(2,n) = Y_value;
+outline_points(1,1) = 100; outline_points(2,1) = 100; %%%%%%%%%%%%make real numbers for this box
+outline_points(1,2) = 100; outline_points(2,2) = 0;
+outline_points(1,3) = 100; outline_points(2,3) = 0;
+outline_points(1,4) = 100; outline_points(2,4) = 0;
+%%now the poly it self.
+%AddPolygon(Parent_object, material, priority, normal_direction, axis_of_rotation, points, thickness) %there are actually more options on AddPolygon but only a sadist would use them.
+CSX = AddPolygon(CSX, 'FR4', 1, 2, 2, outline_points, layer0_substrateZ)
+%
+%%%trace
+
+trace_start = [x,y]
+trace_end = [x,y]
+trace_width = w
+trace_thickness = z
+
+%%cylinders for the ends
+% for more info on them http://openems.de/index.php/Cylinder
+% start and stop have the format [x y z]
+%CSX = AddCylinder(CSX, propName, prio, start, stop, radius, varargin)
+CSX = AddCylinder(CSX, propName, prio, start, stop, trace_width/2, varargin)
+CSX = AddCylinder(CSX, propName, prio, start, stop, trace_width/2, varargin)
+%%box for the traces body
+% for more info on them and arcs http://openems.de/index.php/Box
+% igor "CreateNewLineOnLayer() in create.c 
+% (also CreateNewLineInElement() and CreateNewLineInSymbol() in the same file)"
+% http://openems.de/index.php/Box
+%% for an arc use the same doc
+% CSX = AddBox(CSX,'metal',1,[50 pi/2 10],[70 3*pi/2 -50]); makes a 90deg arc shape
+% from igor2 - "arc is center, width and height (these are radii I think) and start angle (abs) and delta angle (relative) "
+CSX = AddBox(CSX,'metal',1,[50 pi/2 10],[70 3*pi/2 -50]);
+
+%% now to plate a via and then hollow it out with a rotated box
+% cylinder for the copper plating
+CSX = AddCylinder(CSX, propName, prio, start, stop, via_diameter, varargin)
+% cylinder for the annular ring on top
+CSX = AddCylinder(CSX, propName, prio, start, stop, via_annulardia, varargin)
+% cylinder for the annular ring on the bottom
+CSX = AddCylinder(CSX, propName, prio, start, stop, via_annulardia, varargin)
+% cylinder for the air hollowing out the copper cylinder
+CSX = AddCylinder(CSX, propName, prio, start, stop, via_diameter, varargin)%%%%trouble with this one
+
+
+%% the second box is the via's "empty" space
+%% http://openems.de/index.php/Metal_sheet_with_cylindrical_holes
+
+%%% Now the top layer (finally some actual copper)
+
+%%%%%%%%%%%%%%%http://openems.de/index.php/Primitives#Priorities
+
+% define ports
+
+% define environment
+
+% define simulation
