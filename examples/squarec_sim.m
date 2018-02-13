@@ -45,7 +45,7 @@ mesh.z = SmoothMeshLines( [linspace(0,substrate_thick,5) 10*substrate_thick], re
 CSX = DefineRectGrid( CSX, unit, mesh );
 % End of meshing stuff
 
-run example-square_geo.m
+run square_geo.m
 
 % copied from http://openems.de/index.php/Tutorial:_Microstrip_Notch_Filter
 % this stuff enables the xml export and graphing to work
