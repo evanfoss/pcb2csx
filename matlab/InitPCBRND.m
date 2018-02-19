@@ -22,22 +22,28 @@ function PCBRND = InitPCBRND(layers, layer_types, void, base_priority, offset, k
 %
 
 
-layers(1).zbottom = offset.z;
+layers(1).ztop = offset.z;
 
 for counter=1:size(layers,2)
    if (counter > 1)
-      layers(counter).zbottom = layers(counter - 1).ztop;
+      layers(counter).ztop = layers(counter - 1).zbottom;
    end
    if (2 == layer_types(layers(counter).number).subtype)
 %      disp('it is conductive!');
-      layers(counter).ztop = layers(counter).zbottom;
+      layers(counter).zbottom = layers(counter).ztop;
    elseif (3 == layer_types(layers(counter).number).subtype)
 %      disp('it is an insulator!');
-      layers(counter).ztop = layers(counter).zbottom + layer_types(layers(counter).number).thickness;
+      layers(counter).zbottom = layers(counter).ztop - layer_types(layers(counter).number).thickness;
    else
       disp('not yet implimented!');
-      layers(counter).ztop = layers(counter).zbottom + layer_types(layers(counter).number).thickness;
+      layers(counter).zbottom = layers(counter).ztop - layer_types(layers(counter).number).thickness;
    end
+end
+
+board_thickness = layers(size(layers,2)).ztop - layers(1).zbottom;
+for counter=1:size(layers,2)
+   layers(counter).ztop = layers(counter).ztop - board_thickness;
+   layers(counter).zbottom = layers(counter).zbottom - board_thickness;
 end
 
 % how to seperate the matterials
