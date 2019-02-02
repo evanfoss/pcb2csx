@@ -24,28 +24,6 @@ function PCBRND = InitPCBRND(layers, layer_types, void, base_priority, offset, k
 
 layers(1).ztop = offset.z;
 
-for counter=1:size(layers,2)
-   if (counter > 1)
-      layers(counter).ztop = layers(counter - 1).zbottom;
-   end
-   if (2 == layer_types(layers(counter).number).subtype)
-%      disp('it is conductive!');
-      layers(counter).zbottom = layers(counter).ztop;
-   elseif (3 == layer_types(layers(counter).number).subtype)
-%      disp('it is an insulator!');
-      layers(counter).zbottom = layers(counter).ztop - layer_types(layers(counter).number).thickness;
-   else
-      disp('not yet implimented!');
-      layers(counter).zbottom = layers(counter).ztop - layer_types(layers(counter).number).thickness;
-   end
-end
-
-board_thickness = layers(size(layers,2)).ztop - layers(1).zbottom;
-for counter=1:size(layers,2)
-   layers(counter).ztop = layers(counter).ztop - board_thickness;
-   layers(counter).zbottom = layers(counter).zbottom - board_thickness;
-end
-
 % how to seperate the matterials
 prio.substrate = base_priority;
 prio.copperplane = prio.substrate + 1;
@@ -57,6 +35,37 @@ prio.void = prio.coppertrace + 1;
 %   prio.void = mask_prio + 1;
 %   prio.silk = mask_prio;
 %end
+
+PCBRND.void.priority = prio.void;
+
+for counter=1:size(layers,2)
+   if (counter > 1)
+      layers(counter).ztop = layers(counter - 1).zbottom;
+   end
+   % the only 2d material is a conductive sheet
+   if (2 == layer_types(layers(counter).number).subtype)
+      layers(counter).zbottom = layers(counter).ztop;
+      layers(counter).priority = prio.copperplane;
+   elseif (3 == layer_types(layers(counter).number).subtype)
+      % insulators and conductors can be 3D but only insulators have epsilon
+      if ( isfield(layer_types(counter), 'epsilon') )
+         layers(counter).zbottom = layers(counter).ztop - layer_types(layers(counter).number).thickness;
+	 layers(counter).priority = prio.substrate;
+      else
+         layers(counter).zbottom = layers(counter).ztop - layer_types(layers(counter).number).thickness;
+         layers(counter).priority = prio.copperplane;
+      end
+   else
+      disp('not yet implimented!');
+      layers(counter).zbottom = layers(counter).ztop - layer_types(layers(counter).number).thickness;
+   end
+end
+
+board_thickness = layers(size(layers,2)).ztop - layers(1).zbottom;
+for counter=1:size(layers,2)
+   layers(counter).ztop = layers(counter).ztop - board_thickness;
+   layers(counter).zbottom = layers(counter).zbottom - board_thickness;
+end
 
 PCBRND.kludge.segments = kludge.segments;
 

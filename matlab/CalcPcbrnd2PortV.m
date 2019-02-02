@@ -1,7 +1,7 @@
-function material = LookupPcbrndClearMat(PCBRND, layer_number)
-% This function returns the material we are going to clear with for any given layer (layer_number)
-% 
-% 
+function [start, stop] = CalcPcbrnd2PortV(PCBRND, point, start_layer, stop_layer)
+% this function returns two cornerns of the port assuming it is vertical;
+%
+%
 % Copyright (C) 2017 Evan Foss
 %
 % This program is free software: you can redistribute it and/or modify
@@ -18,14 +18,9 @@ function material = LookupPcbrndClearMat(PCBRND, layer_number)
 % along with this program.  If not, see <http://www.gnu.org/licenses/>
 %
 
+point = CalcPcbrndPointsOffset(PCBRND, point);
 
-% the default case is that we are on an outside layer
-
-if (PCBRND.layers(layer_number).clearn > 0)
-   material = PCBRND.layer_types(PCBRND.layers(layer_number).clearn);
-else
-   material = PCBRND.void;
-end
+start = [ point(1, 1), point(2, 1), PCBRND.layers(start_layer).zbottom ];
+stop = [ point(1, 1), point(2, 1), PCBRND.layers(stop_layer).zbottom ];
 
 endfunction
-

@@ -33,13 +33,9 @@ current = PCBRND.layer_types(PCBRND.layers(layer_number).number);
 if (polarity == 0)
    clearmat = LookupPcbrndClearMat(PCBRND, layer_number);
    current.name = clearmat.name;
-   priority = PCBRND.prio.clearance;
+   priority = PCBRND.void.priority;
 else
-   if (3 == current.subtype)
-      priority = PCBRND.prio.copperplane;  
-   else
-      priority = PCBRND.prio.substrate;
-   end
+   priority = PCBRND.layers(layer_number).priority;
 end
 
 if (2 == current.subtype)

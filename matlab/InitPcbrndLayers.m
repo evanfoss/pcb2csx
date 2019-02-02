@@ -26,13 +26,12 @@ layer_types = PCBRND.layer_types;
 void = PCBRND.void;
 
 for counter=1:size(layer_types, 2)
-%   disp("layer type");
-%   disp(layer_types(counter).name);
    if (2 == layer_types(counter).subtype)
-%      disp('it is conductive!');
+      % openems only has conductive sheets not insulating ones so it has to be a conductor
       CSX = AddConductingSheet(CSX, layer_types(counter).name, layer_types(counter).conductivity, layer_types(counter).thickness);
    elseif (3 == layer_types(counter).subtype)
-%      disp('it is an insulator!');
+      % a 3D object can be an insulator or a conductor so now we need some logic about which is which.
+%      disp('it is probably an insulator');
       CSX = AddMaterial(CSX, layer_types(counter).name);
       CSX = SetMaterialProperty(CSX, layer_types(counter).name, 'Epsilon', layer_types(counter).epsilon);
    else

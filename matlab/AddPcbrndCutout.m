@@ -43,9 +43,9 @@ if (size(points,2) > 1)
       trace_x2 = points(1, (edge + 1));
       trace_y2 = points(2, (edge + 1));
       [trace_xy, trace_theta] = CalcPcbrndTraceBodyPriv(trace_x1, trace_y1, trace_x2, trace_y2, trace_radius);
-      CSX = AddLinPoly(CSX, tmp.name, priority, 2, PCBRND.layers(1).zbottom, trace_xy, tmp.thickness, 'CoordSystem',0);
-      CSX = AddCylinder(CSX, tmp.name, priority, [trace_x1 trace_y1 PCBRND.layers(1).zbottom], [trace_x1 trace_y1 (PCBRND.layers(size(PCBRND.layers, 2)).ztop)], trace_radius);
-      CSX = AddCylinder(CSX, tmp.name, priority, [trace_x2 trace_y2 PCBRND.layers(1).zbottom], [trace_x2 trace_y2 (PCBRND.layers(size(PCBRND.layers, 2)).ztop)], trace_radius);
+      CSX = AddLinPoly(CSX, tmp.name, priority, 2, PCBRND.layers(1).ztop, trace_xy, tmp.thickness, 'CoordSystem',0);
+      CSX = AddCylinder(CSX, tmp.name, priority, [trace_x1 trace_y1 PCBRND.layers(1).ztop], [trace_x1 trace_y1 (PCBRND.layers(size(PCBRND.layers, 2)).zbottom)], trace_radius);
+      CSX = AddCylinder(CSX, tmp.name, priority, [trace_x2 trace_y2 PCBRND.layers(1).ztop], [trace_x2 trace_y2 (PCBRND.layers(size(PCBRND.layers, 2)).zbottom)], trace_radius);
       edge = edge + 1;
    endwhile
    if (size(points,2) > 2)
