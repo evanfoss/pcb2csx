@@ -1,7 +1,8 @@
+#!/bin/bash
 
 mkdir ~/programs
-cd ~/programs
-git clone https://github.com/evanfoss/pcb2csx.git
+mkdir ~/programs/pcb2csx
+cp -R * ~/programs/pcb2csx/
 echo "addpath('~/programs/pcb2csx/matlab');" >> ~/.octaverc
 
 
