@@ -5,13 +5,9 @@ This is a collection of matlab/octave scripts used to convert printed circuit bo
 CSXCAD is built using CSG (Constructive Solid Geometry) however a lot of PCB layout software does not use this method for calculating clearance in polygons. This library supports clearance via precutting polygons and using the libraries own cutting solids automatically generated with each object (trace, pad, & etc).
 
 # Installation
-After talking with OpenEMS that project will be including a flag at build time to clone the code from this repo and include it in the installation of their code.
+For the moment I have created a script install.sh that will add the director ~/programs and add the line directing octave to it in your ~/.octaverc file. If you want to have it land somewhere else for what ever reason feel free to edit this. 
 
-The following instructions are out dated but included for clarity.
-
-At the moment I have no real installation system just copy this code to a sensible location and add the following line to your startup.m (matlab) or .octaverc (octave).
-addpath('~/opt/openEMS/share/pcb2csx/matlab');
-Alternatively you could just copy it to the same directory CSXCAD placed it's matlab files in which you should already have done an addpath for.
+I would prefer octave have somewhere for the libraries to live in each persons home but that is not standardized yet.
 
 # Limitations
 
